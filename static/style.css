@@ -1,0 +1,36 @@
+/* Navigation Bar */
+nav {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Navigation Links */
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: 0.3s;
+}
+
+/* Hover Effect */
+nav a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Logout Button Styling */
+.logout-btn {
+    background-color: red;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Logout Button Hover */
+.logout-btn:hover {
+    background-color: darkred;
+}
