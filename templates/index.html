@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Web App</title>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='index.js') }}" defer></script>
+</head>
+<body>
+    <h1>Welcome, {{ username }}!</h1>
+
+{% if username != "Guest" %}
+    <p>You are logged in. <a href="/logout">Logout</a></p>
+{% else %}
+    <a href="{{ url_for('show_register_form') }}">Register</a> | 
+    <a href="{{ url_for('show_login_form') }}">Login</a>
+{% endif %}
+
+    <!-- User Input Form -->
+    <form id="userForm">
+        <input type="text" id="userInput" placeholder="Enter something...">
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Response:</h2>
+    <p id="responseText"></p>
+
+</body>
+</html>
