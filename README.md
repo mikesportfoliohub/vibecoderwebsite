@@ -1,5 +1,5 @@
 # vibecoderwebsite
-Amazon-like Reviews Website for Vibe Coding Projects
+Amazon-like Reviews Website (and Eventual Sandbox) for Vibe Coding Projects
 
 Running the Website is easy!
 
