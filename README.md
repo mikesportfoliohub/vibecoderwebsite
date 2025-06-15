@@ -2,6 +2,7 @@
 Amazon-like Reviews Website for Vibe Coding Projects
 
 Running the Website is easy!
+
 -Sign Up for your NGROK Token: https://ngrok.com/
 
 -Reproduce this repo's directory structure in your Google Drive
