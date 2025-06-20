@@ -1,36 +1,144 @@
-/* Navigation Bar */
+/* Import Google Fonts (Playful and Readable) */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+/* Reset default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------------------- */
+/* Global Theme & Layout  */
+/* ---------------------- */
+body {
+    background: linear-gradient(135deg, #fdfbfb, #ebedee);
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.6;
+}
+
+/* Headers with a playful retro feel */
+h1, h2, h3,
+.welcome-area h1 {
+    font-family: 'Press Start 2P', cursive;
+    color: #264653;
+}
+
+/* ---------------------- */
+/* 8-Bit Navigation Bar   */
+/* ---------------------- */
 nav {
-    background-color: #333;
-    padding: 10px;
+    background-color: #2a9d8f; /* soft teal */
+    padding: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    gap: 10px;
+    font-family: 'Press Start 2P', cursive;
 }
 
-/* Navigation Links */
 nav a {
-    color: white;
+    display: inline-block;
     text-decoration: none;
-    font-size: 18px;
-    padding: 8px 12px;
-    transition: 0.3s;
+    color: #264653;
+    background-color: #e9c46a;
+    padding: 10px 16px;
+    border: 2px solid #264653;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover Effect */
+nav a:nth-child(1) {
+    transform: translateY(-5px) rotate(-2deg);
+}
+
+nav a:nth-child(2) {
+    transform: translateY(3px) rotate(1deg);
+}
+
+nav a:nth-child(3) {
+    transform: translateY(-3px) rotate(2deg);
+}
+
 nav a:hover {
-    background-color: #555;
-    border-radius: 5px;
+    background-color: #264653;
+    color: #e9c46a;
+    transform: translateY(0) rotate(0deg) scale(1.1);
 }
 
-/* Logout Button Styling */
-.logout-btn {
-    background-color: red;
-    padding: 8px 12px;
-    border-radius: 5px;
+/* ---------------------- */
+/* Welcome Area           */
+/* ---------------------- */
+.welcome-area {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-area h1 {
+    margin-bottom: 10px;
+}
+
+/* ---------------------- */
+/* User Input Form Styles */
+/* ---------------------- */
+form {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
     font-weight: bold;
 }
 
-/* Logout Button Hover */
-.logout-btn:hover {
-    background-color: darkred;
+input {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* ---------------------- */
+/* Responsive Styling     */
+/* ---------------------- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
+
+    .welcome-area,
+    form {
+        margin: 10px;
+        padding: 15px;
+    }
 }
