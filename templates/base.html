@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}My Web App{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <nav>
-    <a href="/index">Home</a>
-    {% if session.get('user') %}
-        <!-- Logout button appears only for logged-in users -->
-        <a href="/logout" class="logout-btn">Logout</a>
-    {% else %}
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-    {% endif %}
+  <a href="{{ url_for('home') }}">Home</a>
+  {% if session.get('username') %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+  {% else %}
+    <a href="{{ url_for('show_login_form') }}">Login</a>
+    <a href="{{ url_for('show_register_form') }}">Register</a>
+  {% endif %}
 </nav>
 
-<!-- Page content goes here -->
+<!-- Page content -->
 {% block content %}{% endblock %}
+
+<!-- Page-specific scripts -->
+{% block scripts %}{% endblock %}
 
 </body>
 </html>
-

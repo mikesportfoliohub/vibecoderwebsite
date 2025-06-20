@@ -1,30 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask Web App</title>
-    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
-    <script src="{{ url_for('static', filename='index.js') }}" defer></script>
-</head>
-<body>
-    <h1>Welcome, {{ username }}!</h1>
+{% extends "base.html" %}
 
-{% if username != "Guest" %}
-    <p>You are logged in. <a href="/logout">Logout</a></p>
-{% else %}
-    <a href="{{ url_for('show_register_form') }}">Register</a> | 
-    <a href="{{ url_for('show_login_form') }}">Login</a>
-{% endif %}
+{% block title %}
+  Vibe Coder Hub
+{% endblock %}
 
-    <!-- User Input Form -->
-    <form id="userForm">
-        <input type="text" id="userInput" placeholder="Enter something...">
-        <button type="submit">Submit</button>
-    </form>
+{% block content %}
+  <h1>Welcome, {{ username }}!</h1>
 
-    <h2>Response:</h2>
-    <p id="responseText"></p>
+  {% if username != "Guest" %}
+      <!-- Logout button immediately below the welcome message -->
+      <p>
+          <a href="/logout" class="logout-btn">Logout</a>
+      </p>
+      <p>
+          You're logged in as a registered member. Enjoy exclusive access to company IPs and the ability to upload your vibe coding projects!
+      </p>
+  {% else %}
+      <p>
+          You are browsing as a guest. Explore our sandbox environment to execute projects safely. Registered members enjoy exclusive access to company IPs and the ability to upload your vibe coding projects!
+      </p>
+  {% endif %}
 
-</body>
-</html>
+  <!-- User Input Form -->
+  <form id="userForm">
+      {% if username != "Guest" %}
+          <label for="userInput">Upload Your Vibe Project or Provide an Update:</label>
+          <input type="text" id="userInput" placeholder="Enter project command or upload link..." required>
+      {% else %}
+          <label for="userInput">Execute a Sandbox Project Command:</label>
+          <input type="text" id="userInput" placeholder="Type your sandbox command here..." required>
+      {% endif %}
+      <button type="submit">Submit</button>
+  </form>
+
+  <h2>Response:</h2>
+  <p id="responseText"></p>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='index.js') }}" defer></script>
+{% endblock %}
