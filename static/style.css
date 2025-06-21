@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
-/* Reset default styling */
+/* Reset Default Styling */
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +19,7 @@ body {
     line-height: 1.6;
 }
 
-/* Headers with a playful retro feel */
+/* Headers with a Playful Retro Feel */
 h1, h2, h3,
 .welcome-area h1 {
     font-family: 'Press Start 2P', cursive;
@@ -29,8 +29,13 @@ h1, h2, h3,
 /* ---------------------- */
 /* 8-Bit Navigation Bar   */
 /* ---------------------- */
+/*
+   This navigation bar uses playful, retro styling to evoke an 8-bit game vibe.
+   It’s applied directly to the <nav> element. If you later add additional 
+   navigational components (e.g., breadcrumb nav), consider scoping them with separate classes.
+*/
 nav {
-    background-color: #2a9d8f; /* soft teal */
+    background-color: #2a9d8f;   /* Soft teal background */
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -42,25 +47,25 @@ nav {
 nav a {
     display: inline-block;
     text-decoration: none;
-    color: #264653;
-    background-color: #e9c46a;
+    color: #264653;             /* Dark blue text */
+    background-color: #e9c46a;   /* Mustard yellow background */
     padding: 10px 16px;
     border: 2px solid #264653;
     transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Apply Fun, Playful Offsets to Individual Nav Links */
 nav a:nth-child(1) {
     transform: translateY(-5px) rotate(-2deg);
 }
-
 nav a:nth-child(2) {
     transform: translateY(3px) rotate(1deg);
 }
-
 nav a:nth-child(3) {
     transform: translateY(-3px) rotate(2deg);
 }
 
+/* Hover Effects to Enhance Interactivity */
 nav a:hover {
     background-color: #264653;
     color: #e9c46a;
@@ -70,6 +75,10 @@ nav a:hover {
 /* ---------------------- */
 /* Welcome Area           */
 /* ---------------------- */
+/*
+   A centered, visually appealing welcome area with a subtly transparent 
+   white background and soft box-shadow.
+*/
 .welcome-area {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
@@ -86,6 +95,10 @@ nav a:hover {
 /* ---------------------- */
 /* User Input Form Styles */
 /* ---------------------- */
+/*
+   Clean and approachable styling for form elements to maintain consistency 
+   with the overall design.
+*/
 form {
     margin: 20px auto;
     max-width: 600px;
@@ -124,21 +137,10 @@ button:hover {
 }
 
 /* ---------------------- */
-/* Responsive Styling     */
+/* Breadcrumb Navigation  */
 /* ---------------------- */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav a {
-        margin: 10px 0;
-    }
-
-    .welcome-area,
-    form {
-        margin: 10px;
-        padding: 15px;
-    }
-}
+/*
+   A minimalistic breadcrumb style to display a clear trail for page navigation.
+   The "/" separator is inserted automatically between items.
+*/
+.breadcrumb {
