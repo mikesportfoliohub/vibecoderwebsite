@@ -13,15 +13,16 @@
           <a href="/logout" class="logout-btn">Logout</a>
       </p>
       <p>
-          You're logged in as a registered member. Enjoy exclusive access to company IPs and the ability to upload your vibe coding projects!
+          You're logged in as a registered member. Enjoy having exclusive access to company IPs, sharing reviews, and uploading vibe coding projects!
       </p>
   {% else %}
       <p>
-          You are browsing as a guest. Explore our sandbox environment to execute projects safely. Registered members enjoy exclusive access to company IPs and the ability to upload your vibe coding projects!
+          You are browsing as a guest. Explore our sandbox environment to execute projects safely. Registered members enjoy having exclusive access to company IPs, sharing reviews, and uploading vibe coding projects!
       </p>
   {% endif %}
 
   <!-- User Input Form -->
+<div class="feature-cell coming-soon">
   <form id="userForm">
       {% if username != "Guest" %}
           <label for="userInput">Upload Your Vibe Project or Provide an Update:</label>
@@ -32,6 +33,7 @@
       {% endif %}
       <button type="submit">Submit</button>
   </form>
+</div>
 
   <h2>Response:</h2>
   <p id="responseText"></p>

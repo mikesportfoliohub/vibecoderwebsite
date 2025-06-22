@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Goodbye!{% endblock %}
+
+{% block content %}
+  <div class="page-content">
+    <h1>Catch You Later!</h1>
+    <p>{{ goodbye }}</p>
+    <p><a href="{{ url_for('home') }}">Back to the Hub</a></p>
+  </div>
+{% endblock %}
