@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{% block title %}My Web App{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
 
   <!-- Main Navigation -->
   <nav class="main-nav">
-    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('main.home') }}">Home</a>
+
     {% if session.get('username') %}
-      <a href="{{ url_for('logout') }}">Logout</a>
+      <span class="nav-greeting">Hi, {{ session.username }}!</span>
+
+      {% if session.get('is_admin') %}
+        <a href="{{ url_for('auth.admin_dashboard') }}">Admin</a>
+      {% endif %}
+
+      <a href="{{ url_for('auth.logout') }}">Logout</a>
     {% else %}
-      <a href="{{ url_for('show_login_form') }}">Login</a>
-      <a href="{{ url_for('show_register_form') }}">Register</a>
+      <a href="{{ url_for('auth.show_login_form') }}">Login</a>
+      <a href="{{ url_for('auth.show_register_form') }}">Register</a>
     {% endif %}
   </nav>
-
-
 
   <!-- Page content -->
   <main class="page-content">
@@ -34,8 +39,8 @@
   <!-- Page-specific scripts -->
   {% block scripts %}{% endblock %}
 
-  <!-- Inject the home URL as a global variable for base.js -->
-  <script> const HOME_URL = "{{ url_for('home') }}"; </script>
+  <!-- Global JS Variables & Base Script -->
+  <script>const HOME_URL = "{{ url_for('main.home') }}";</script>
   <script src="{{ url_for('static', filename='base.js') }}" defer></script>
 </body>
 </html>
