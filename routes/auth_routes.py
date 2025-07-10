@@ -29,6 +29,14 @@ GOODBYES = [
     "Vibe offline, but spirit stays online. See you next time!",
     "Your coding couch misses you already. Drop by again soon!",
     "Our pixels part today, but the code remains. Until we ping again!",
+    "Logging out now. May your exit code always be 0.",
+    "Session ended without panics. sudo make coffee",
+    "Terminal closed, but the vibe lives on. Reboot with us again soon!",
+    "Farewell, coder. May your uptime be high and your load average low.",
+    "This TTY is closing—catch you on the next virtual console!",
+    "Reached EOF on today's session. Compile your dreams until next time!",
+    "Unmounting Vibe Coder Hub… see you when you mount a new project!",
+    "Session terminated. Don’t forget to git push your brilliance!"
 ]
 
 # ─── DB HELPER ──────────────────────────────────────────────────────────────
@@ -87,7 +95,7 @@ def show_login_form():
 def login():
     """
     Expects JSON: { email, password }
-    On success: stores session and returns { message, username }
+    On success: sets session and returns { message, username, is_admin }
     On failure: 401 + { error }.
     """
     data  = request.get_json(force=True)
@@ -95,29 +103,41 @@ def login():
     pwd   = data.get("password", "")
 
     if not email or not pwd:
-        return jsonify({"error": "Email and password required"}), 400
+        return jsonify(error="Email and password required"), 400
 
     conn = get_db_connection()
     cur  = conn.cursor()
     cur.execute(
-        "SELECT id, username, password FROM users WHERE email = ?",
+        "SELECT id, username, password, is_admin FROM users WHERE email = ?",
         (email,)
     )
     user = cur.fetchone()
     conn.close()
 
     if user and check_password_hash(user["password"], pwd):
+        # Clear any existing session data
         session.clear()
-        session["user_id"]   = user["id"]
-        session["username"]  = user["username"]
-        logger.info(f"User logged in: {user['username']}")
-        return jsonify({
-            "message":  "Login successful!",
-            "username": user["username"]
-        })
+
+        # Core session variables
+        session["user_id"]  = user["id"]
+        session["username"] = user["username"]
+
+        # Role‐based flag
+        is_admin = bool(user["is_admin"])
+        session["is_admin"] = is_admin
+
+        logger.info(f"User logged in: {user['username']} (admin={is_admin})")
+
+        # Return admin flag so frontend can route or show UI elements
+        return jsonify(
+            message   = "Login successful!",
+            username  = user["username"],
+            is_admin  = is_admin
+        )
 
     logger.warning(f"Failed login attempt for {email}")
-    return jsonify({"error": "Invalid credentials!"}), 401
+    return jsonify(error="Invalid credentials!"), 401
+
 
 # ─── LOGOUT ─────────────────────────────────────────────────────────────────
 @auth_bp.route('/logout', methods=['GET', 'POST'])

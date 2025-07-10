@@ -1,6 +1,6 @@
 # routes/main_routes.py
 
-from flask import Blueprint, session, render_template, request, jsonify, current_app
+from flask import Blueprint, session, render_template, redirect, url_for, request, jsonify, current_app
 import logging
 
 # ─── Blueprint Setup ──────────────────────────────────────────────────────
@@ -13,14 +13,23 @@ logger = logging.getLogger(__name__)
 @main_bp.route('/', methods=['GET'])
 def home():
     """
-    Homepage: shows a welcome message to the logged-in user (or Guest).
+    Homepage: if logged in, redirect to dashboard/admin.
+    Otherwise render the public landing page.
     """
-    username = session.get('username', 'Guest')
-    logger.debug(f"Rendering home for user: {username}")
+    user_id = session.get('user_id')
+    if user_id:
+        # role‐based redirect
+        if session.get('is_admin'):
+            return redirect(url_for('admin.admin_dashboard'))
+        return redirect(url_for('dashboard_bp.dashboard_home'))
+
+    # Guest view
+    username = 'Guest'
+    logger.debug("Rendering public home page for Guest")
     return render_template('index.html', username=username)
 
 
-# ─── POST / ───────────────────────────────────────────────────────────────
+# ─── POST / ──────────────────────────────────────────────────────────────
 @main_bp.route('/', methods=['POST'])
 def process_input():
     """
@@ -31,14 +40,17 @@ def process_input():
 
     if not user_input:
         logger.warning("Empty user_input received")
-        return jsonify({
-            "error": "No input provided"
-        }), 400
+        return jsonify({"error": "No input provided"}), 400
 
-    return jsonify({
-        "message": f"You entered: {user_input}"
-    })
+    return jsonify({"message": f"You entered: {user_input}"})
 
+
+@main_bp.route('/about', methods=['GET'])
+def about():
+    """
+    Public About page describing Vibe Coder Hub’s mission, sandbox, and LLM innovations.
+    """
+    return render_template('about.html')  # make sure about.html lives under templates/
 
 # ─── (Optional) Health Check ──────────────────────────────────────────────
 @main_bp.route('/healthz', methods=['GET'])
