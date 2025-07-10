@@ -1,6 +1,6 @@
 # Vibe Coding Reviews Hub
 
-Step into a demo website where full-stack development meets LLM inspired innovations and tacticts. Become an Amazon-style reviewer for other Vibe Coding Projects.
+Step into a demo website where full-stack development meets LLM inspired innovations and tactics. Become an Amazon-style reviewer for other Vibe Coding Projects.
 
 ## Your Mission, Should You Choose to Accept It
 
