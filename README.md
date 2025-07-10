@@ -22,7 +22,6 @@ Don’t forget to grant Google Drive access so your site can flex its files.
 
 ## Next Quests
 
-- Tweak LLM prompts to generate snarkier or sweeter reviews  
 - Deck out the UI with custom badges, emotes, or theme packs  
 - Hook in real-time analytics and see how your vibes land  
 - Invite friends to race for the highest “Vibe Score”  
