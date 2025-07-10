@@ -58,6 +58,8 @@ h1, h2, h3,
 .main-nav a:nth-child(1) { transform: translateY(-5px) rotate(-2deg); }
 .main-nav a:nth-child(2) { transform: translateY(3px)  rotate(1deg);  }
 .main-nav a:nth-child(3) { transform: translateY(-3px) rotate(2deg);  }
+.main-nav a:nth-of-type(4) { transform: translateY(5px)  rotate(-1deg); }
+
 
 .main-nav a:hover {
   background-color: #264653;
