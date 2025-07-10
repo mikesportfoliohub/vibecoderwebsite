@@ -5,7 +5,7 @@ Step into a demo website where full-stack development meets LLM inspired innovat
 ## Your Mission, Should You Choose to Accept It
 
 - Score some swagger by writing reviews  
-- Peek under the hood of a full-stack LLM-powered showcase  
+- Peek under the hood of full-stack LLM-powered code development, tactics, and innovations
 - Eventually hack around in a sandbox bursting with possibilities  
 
 ---
