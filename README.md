@@ -1,6 +1,6 @@
 # Vibe Coding Reviews Hub
 
-Step into a demo website where full-stack development meets LLM inspired innovations and tactics. Become an Amazon-style reviewer for other Vibe Coding Projects.
+Step into a demo website where full-stack development meets LLM inspired innovations and tactics. Become an Amazon-style reviewer for other Vibe Coding Projects. 
 
 ## Your Mission, Should You Choose to Accept It
 
@@ -26,6 +26,8 @@ Don’t forget to grant Google Drive access so your site can flex its files.
 - Hook in real-time analytics and see how your vibes land  
 - Invite friends to race for the highest “Vibe Score”  
 
-Ready to climb the leaderboard of code and creativity? The Vibe Hub awaits.
+Ready to climb the leaderboard of code and creativity? The Vibe Hub awaits! 
+
+We are an R&D Company gamifying innovation.
 
 ![Vibe Coder Hub](https://github.com/user-attachments/assets/a10b22f3-f116-4b95-834c-02c193aa26fe)
