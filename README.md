@@ -28,6 +28,6 @@ Don’t forget to grant Google Drive access so your site can flex its files.
 
 Ready to climb the leaderboard of code and creativity? The Vibe Hub awaits! 
 
-We are an R&D Company gamifying innovation.
+We are an R&D company gamifying innovation.
 
 ![Vibe Coder Hub](https://github.com/user-attachments/assets/a10b22f3-f116-4b95-834c-02c193aa26fe)
