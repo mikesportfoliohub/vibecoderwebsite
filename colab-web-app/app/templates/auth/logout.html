@@ -1,0 +1,15 @@
+{# app/templates/auth/logout.html #}
+{% extends "base.html" %}
+
+{% block title %}Goodbye!{% endblock %}
+
+{% block breadcrumbs %}
+  {% set breadcrumb = ['Home', 'Logout'] %}
+  {{ super() }}
+{% endblock %}
+
+{% block content %}
+  <h1>Catch You Later!</h1>
+  <p>{{ goodbye }}</p>
+  <p><a href="{{ url_for('main_bp.home') }}">Back to the Hub</a></p>
+{% endblock %}

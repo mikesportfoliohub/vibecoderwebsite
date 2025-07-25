@@ -1,0 +1,58 @@
+{# app/templates/auth/register.html #}
+{% extends "base.html" %}
+
+{% block title %}Register – Vibe Coder Hub{% endblock %}
+
+{% block breadcrumbs %}
+  {% set breadcrumb = ['Home', 'Register'] %}
+  {{ super() }}
+{% endblock %}
+
+{% block content %}
+  <h1>Register</h1>
+
+  <form id="registerForm">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      placeholder="Username"
+      required
+    />
+
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Email"
+      required
+    />
+
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      placeholder="Password"
+      required
+    />
+
+    <button type="submit">Register</button>
+  </form>
+
+  <p id="registerResponse"></p>
+
+  <!-- Button to show all registered users -->
+  <button id="showUsers">Show Registered Users</button>
+  <ul id="usersList"></ul>
+
+  <p><a href="{{ url_for('main_bp.home') }}">Back to Home</a></p>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/register.js') }}" defer></script>
+{% endblock %}
+```
