@@ -1,0 +1,54 @@
+{# app/templates/main/index.html #}
+{% extends "base.html" %}
+
+{% block title %}
+  Vibe Coder Hub
+{% endblock %}
+
+{% block content %}
+  <h1>Welcome, {{ username }}!</h1>
+
+  {% if username != "Guest" %}
+    <p>
+      <a href="{{ url_for('auth_bp.logout') }}" class="logout-btn">Logout</a>
+    </p>
+    <p>
+      You’re logged in as a registered member. Enjoy exclusive access to company IPs, sharing reviews, and uploading vibe coding projects!
+    </p>
+  {% else %}
+    <p>
+      You are browsing as a guest. Explore our sandbox to run projects safely. Registered members can access IPs, share reviews, and upload vibe projects!
+    </p>
+  {% endif %}
+
+  <div class="feature-cell coming-soon">
+    <form id="userForm">
+      {% if username != "Guest" %}
+        <label for="userInput">Upload Your Vibe Project or Provide an Update:</label>
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Enter project command or upload link..."
+          required
+        >
+      {% else %}
+        <label for="userInput">Execute a Sandbox Project Command:</label>
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Type your sandbox command here..."
+          required
+        >
+      {% endif %}
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <h2>Response:</h2>
+  <p id="responseText"></p>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+{% endblock %}

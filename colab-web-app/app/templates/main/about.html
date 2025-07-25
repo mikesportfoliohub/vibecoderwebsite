@@ -1,1 +1,104 @@
+{# app/templates/main/about.html #}
+{% extends "base.html" %}
 
+{% block title %}About • Vibe Coder Hub{% endblock %}
+
+{% block breadcrumbs %}
+  {% set breadcrumb = [
+       ('Home', url_for('main_bp.home')),
+       ('About', None)
+     ] %}
+  {{ super() }}
+{% endblock %}
+
+{% block head %}
+  {# Example: include a page-specific stylesheet #}
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/about.css') }}" />
+{% endblock %}
+
+{% block content %}
+  <div class="container my-5">
+
+    <!-- Hero -->
+    <section class="hero text-center mb-5">
+      <h1 class="display-4">Welcome to Vibe Coder Hub</h1>
+      <p class="lead">
+        Your arena for reviewing and executing LLM-driven coding projects—no setup required.
+      </p>
+      <a href="{{ url_for('main_bp.home') }}" class="btn btn-primary btn-lg">
+        Try the Sandbox
+      </a>
+      <p class="mt-3 text-muted">
+        Log in to unlock innovations and expert LLM tactics. Upload New Vibes.
+      </p>
+    </section>
+
+    <!-- What We Do -->
+    <section id="what-we-do" class="mb-5">
+      <h2>What We Do</h2>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <h3>Sandbox Environment</h3>
+          <p>Run, review, and iterate—your code, your controls, your vibe.</p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h3>Community & Collaboration</h3>
+          <p>
+            Share projects, get feedback, level up your AI skills. Real-time collaboration and code reviews built in.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Join -->
+    <section id="why-join" class="mb-5">
+      <h2>Why Join?</h2>
+      <ul class="list-unstyled">
+        <li>✔ No installation</li>
+        <li>✔ Industry-vetted security practices</li>
+        <li>✔ Expert-curated projects</li>
+      </ul>
+    </section>
+
+    <!-- Innovations Teaser -->
+    <section class="mb-5 p-4 bg-light rounded">
+      <h2>Our Innovations</h2>
+      <p>
+        From tried and true LLM tactics to new intellectual properties, see how our team leverages the latest LLMs.
+      </p>
+      <a href="{{ url_for('auth_bp.show_login_form') }}"
+         class="btn btn-outline-secondary">
+        Log in to read more
+      </a>
+    </section>
+
+    <!-- LLM Tactics Teaser -->
+    <section class="mb-5 p-4 bg-light rounded">
+      <h2>Mastering LLM Conversations</h2>
+      <p>
+        Craft prompts that yield clean, efficient code. Learn multi-turn debugging, context chaining, and advanced prompt engineering.
+      </p>
+      <a href="{{ url_for('auth_bp.show_login_form') }}"
+         class="btn btn-outline-secondary">
+        Unlock the Innovations and Tactics
+      </a>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta text-center">
+      <h2>Ready to Vibe?</h2>
+      <a href="{{ url_for('auth_bp.show_login_form') }}"
+         class="btn btn-success btn-lg">
+        Log In / Register
+      </a>
+      <p class="small mt-2">Join today.</p>
+    </section>
+
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {# Page-specific JS if needed #}
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+{% endblock %}
